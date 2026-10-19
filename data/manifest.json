@@ -1,0 +1,57 @@
+{
+  "integerPart": "3",
+  "totalDigits": 1000000,
+  "chunkSize": 100000,
+  "files": [
+    {
+      "file": "pi-000.json",
+      "start": 0,
+      "length": 100000
+    },
+    {
+      "file": "pi-001.json",
+      "start": 100000,
+      "length": 100000
+    },
+    {
+      "file": "pi-002.json",
+      "start": 200000,
+      "length": 100000
+    },
+    {
+      "file": "pi-003.json",
+      "start": 300000,
+      "length": 100000
+    },
+    {
+      "file": "pi-004.json",
+      "start": 400000,
+      "length": 100000
+    },
+    {
+      "file": "pi-005.json",
+      "start": 500000,
+      "length": 100000
+    },
+    {
+      "file": "pi-006.json",
+      "start": 600000,
+      "length": 100000
+    },
+    {
+      "file": "pi-007.json",
+      "start": 700000,
+      "length": 100000
+    },
+    {
+      "file": "pi-008.json",
+      "start": 800000,
+      "length": 100000
+    },
+    {
+      "file": "pi-009.json",
+      "start": 900000,
+      "length": 100000
+    }
+  ]
+}

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Pi Search</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main>
+    <h1>Pi Search</h1>
+    <p id="available" class="muted">Loading digit data…</p>
+
+    <form id="search-form" autocomplete="off">
+      <label for="query" class="muted">Digits to find (0–9 only, after the decimal point)</label>
+      <div class="row">
+        <input id="query" type="text" inputmode="numeric" spellcheck="false" placeholder="e.g. 14159265">
+        <button id="search-btn" type="submit">Search</button>
+      </div>
+    </form>
+
+    <p id="result" class="result" role="status" aria-live="polite"></p>
+
+    <p id="position" class="muted"></p>
+    <div id="digits" class="digits" aria-label="Digits of pi"></div>
+
+    <div class="nav">
+      <button id="prev" type="button">&larr; Previous</button>
+      <button id="next" type="button">Next &rarr;</button>
+      <form id="goto-form" class="goto" autocomplete="off">
+        <label for="goto" class="muted">Go to position</label>
+        <input id="goto" type="text" inputmode="numeric" placeholder="0">
+        <button type="submit">Go</button>
+      </form>
+    </div>
+
+    <details>
+      <summary>About this data</summary>
+      <p><strong>Positions.</strong> Positions are zero-based and count only the digits after the decimal point.
+      Position 0 is the first digit after the point (the 1 in 3.<strong>1</strong>415…); the leading 3 is not counted and is not searched.</p>
+      <p><strong>What is searchable.</strong> Only the digits listed in <code>data/manifest.json</code>. A static website
+      cannot search digits it has not downloaded: each search streams through every data file in the manifest, one file at a time.
+      A "not found" result only means the sequence does not occur in those digits, not that it never occurs in π.</p>
+      <p><strong>Where the digits come from.</strong> The included digits were computed with two independent methods
+      (Chudnovsky binary splitting and the mpmath library); both agreed on every digit before they were written to the JSON files.
+      They are not random and not hand-typed.</p>
+      <p><strong>Adding more verified digits.</strong> Add a file such as <code>data/pi-010.json</code> containing
+      <code>{"start": 1000000, "digits": "…"}</code>, where <code>digits</code> is a string of decimal digits that continues exactly where the
+      previous file ends (digits after the decimal point only, no "3."), and <code>start</code> is the zero-based position of its first digit.
+      Then add <code>{"file": "pi-010.json", "start": 1000000, "length": N}</code> to <code>files</code> in <code>manifest.json</code>
+      and increase <code>totalDigits</code> by <code>N</code>. The page checks that files are contiguous and match their declared lengths,
+      and reports an error otherwise. Only import digits from a trusted, verified source.</p>
+      <p><strong>Opening locally.</strong> Browsers block <code>fetch()</code> of local JSON files when the page is opened via
+      <code>file://</code>. Host the folder on any static host (for example GitHub Pages) or any static file server.</p>
+    </details>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>
